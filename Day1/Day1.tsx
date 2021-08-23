@@ -10,7 +10,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 
-const App = () => {
+const Day1 = () => {
 
 	const SIZE = 100.0
 
@@ -18,12 +18,19 @@ const App = () => {
 	const scale = useSharedValue(2)
 	const borderRadius = useSharedValue(0)
 
+	const handleRotation = (progress: Animated.SharedValue<number>) => {
+
+		'worklet' ///Putting this here so that this function works completely on the UI thread
+
+		return `${ progress.value * 2 * Math.PI }rad`
+	}
+
 	const reanimatedStyle = useAnimatedStyle(()=>{
-		return{
-			// opacity: progress.value,
+		return {
+			opacity: progress.value,
 			transform: [
 			{ scale: scale.value },
-			{ rotate: `${ progress.value * 2 * Math.PI }rad` }
+			{ rotate: handleRotation(progress) }
 			],
 			borderRadius: borderRadius.value
 		}
@@ -52,4 +59,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default App
+export default Day1
