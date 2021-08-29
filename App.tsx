@@ -8,7 +8,7 @@ import Day3 from './Day3/Day3'
 const App = () => {
 
 	return (
-		<Day2 />
+		<Day3 />
 	)
 }
 
